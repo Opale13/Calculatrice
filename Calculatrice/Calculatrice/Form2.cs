@@ -42,7 +42,7 @@ namespace Calculatrice
 
         private string Help()
         {
-            string function = this.textBox1.Text;
+            string function = this.textBox1.Text.ToLower();
 
             Form1 test = new Form1();
             Dictionary<string, Type> dicoDll = test.DicoDll;
