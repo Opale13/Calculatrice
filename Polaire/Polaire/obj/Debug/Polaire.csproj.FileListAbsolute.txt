@@ -1,0 +1,14 @@
+C:\Users\Ludovic\Desktop\Projet2_POO\Polaire\Polaire\bin\Debug\Polaire.dll
+C:\Users\Ludovic\Desktop\Projet2_POO\Polaire\Polaire\bin\Debug\Polaire.pdb
+C:\Users\Ludovic\Desktop\Projet2_POO\Polaire\Polaire\bin\Debug\SuperComputer.dll
+C:\Users\Ludovic\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.csprojResolveAssemblyReference.cache
+C:\Users\Ludovic\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.csproj.CoreCompileInputs.cache
+C:\Users\Ludovic\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.dll
+C:\Users\Ludovic\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.pdb
+C:\Users\le-so\Desktop\Projet2_POO\Polaire\Polaire\bin\Debug\Polaire.dll
+C:\Users\le-so\Desktop\Projet2_POO\Polaire\Polaire\bin\Debug\Polaire.pdb
+C:\Users\le-so\Desktop\Projet2_POO\Polaire\Polaire\bin\Debug\SuperComputer.dll
+C:\Users\le-so\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.csprojResolveAssemblyReference.cache
+C:\Users\le-so\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.csproj.CoreCompileInputs.cache
+C:\Users\le-so\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.dll
+C:\Users\le-so\Desktop\Projet2_POO\Polaire\Polaire\obj\Debug\Polaire.pdb

@@ -1,0 +1,12 @@
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csprojResolveAssemblyReference.cache
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Form1.resources
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Properties.Resources.resources
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csproj.GenerateResource.Cache
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csproj.CoreCompileInputs.cache
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\bin\Debug\Calculatrice.exe.config
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\bin\Debug\Calculatrice.exe
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\bin\Debug\Calculatrice.pdb
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.exe
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.pdb
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\bin\Debug\SuperComputer.dll
+C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Form2.resources

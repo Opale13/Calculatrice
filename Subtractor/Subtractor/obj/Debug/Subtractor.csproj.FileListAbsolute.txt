@@ -1,0 +1,12 @@
+C:\Users\le-so\Github\Projet2_POO\Subtractor\Subtractor\obj\Debug\Subtractor.csproj.CoreCompileInputs.cache
+C:\Users\le-so\Github\Projet2_POO\Subtractor\Subtractor\bin\Debug\Subtractor.dll
+C:\Users\le-so\Github\Projet2_POO\Subtractor\Subtractor\bin\Debug\Subtractor.pdb
+C:\Users\le-so\Github\Projet2_POO\Subtractor\Subtractor\bin\Debug\SuperComputer.dll
+C:\Users\le-so\Github\Projet2_POO\Subtractor\Subtractor\obj\Debug\Subtractor.dll
+C:\Users\le-so\Github\Projet2_POO\Subtractor\Subtractor\obj\Debug\Subtractor.pdb
+C:\Users\le-so\Desktop\Projet2_POO\Subtractor\Subtractor\bin\Debug\Subtractor.dll
+C:\Users\le-so\Desktop\Projet2_POO\Subtractor\Subtractor\bin\Debug\Subtractor.pdb
+C:\Users\le-so\Desktop\Projet2_POO\Subtractor\Subtractor\bin\Debug\SuperComputer.dll
+C:\Users\le-so\Desktop\Projet2_POO\Subtractor\Subtractor\obj\Debug\Subtractor.csproj.CoreCompileInputs.cache
+C:\Users\le-so\Desktop\Projet2_POO\Subtractor\Subtractor\obj\Debug\Subtractor.dll
+C:\Users\le-so\Desktop\Projet2_POO\Subtractor\Subtractor\obj\Debug\Subtractor.pdb
