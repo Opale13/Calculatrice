@@ -10,3 +10,15 @@ C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatr
 C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.pdb
 C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\bin\Debug\SuperComputer.dll
 C:\Users\le-so\Desktop\Projet2_POO\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Form2.resources
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\bin\Debug\Calculatrice.exe.config
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\bin\Debug\Calculatrice.exe
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\bin\Debug\Calculatrice.pdb
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\bin\Debug\SuperComputer.dll
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csprojResolveAssemblyReference.cache
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Form1.resources
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Form2.resources
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.Properties.Resources.resources
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csproj.GenerateResource.Cache
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.csproj.CoreCompileInputs.cache
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.exe
+C:\Users\beard\Google Drive\ECAM (1)\3BA\Programmation orientée objet\Projet perso 2\Projet2_POObis\Calculatrice\Calculatrice\obj\Debug\Calculatrice.pdb
