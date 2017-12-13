@@ -30,7 +30,7 @@ namespace Calculatrice
                     Assembly dll = Assembly.LoadFile(dllName);
                     Type type = dll.GetExportedTypes()[0];
                     object o = Activator.CreateInstance(type);
-                    dicoDll.Add((string)type.GetProperty("Name").GetValue(o), type);
+                    dicoDll.Add(((string)type.GetProperty("Name").GetValue(o)).ToLower(), type);
                 }
             }
         }
@@ -103,7 +103,7 @@ namespace Calculatrice
                 if (reg.IsMatch(textBox1.Text.Replace(".", ",")))
                 {
                     //recuperation des différents match
-                    MatchCollection matches = reg.Matches(textBox1.Text.Replace(".", ","));
+                    MatchCollection matches = reg.Matches(textBox1.Text.Replace(".", ",").ToLower());
                     //recupération des groupes matchés
                     GroupCollection groups = matches[0].Groups;
 
@@ -116,10 +116,39 @@ namespace Calculatrice
                     object result = function.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                            null, o, new object[] { element });
 
-                    if (result is int[] || result is double[] || result is string[])
+                    Type info = function.GetMethod("Evaluate").ReturnType;
+
+                    string type = Convert.ToString(info).Split('.')[1].ToLower();
+
+                    if (type == "double[]")
                     {
+                        string simpleType = type.Split('[')[0];
+
                         string text = "";
-                        foreach (object elem in (double[])result)
+                        foreach (double elem in (double[])result)
+                        {
+                            text += Convert.ToString(elem);
+                        }
+
+                        display.Text += text + "\r\n";
+                    }
+                    else if (type == "int16[]" || type == "int32[]" || type == "int64[]")
+                    {
+                        string simpleType = type.Split('[')[0];
+                        string text = "";
+                        foreach (int elem in (int[])result)
+                        {
+                            text += Convert.ToString(elem);
+                        }
+
+                        display.Text += text + "\r\n";
+                    }
+                    else if (type == "string[]")
+                    {
+                        string simpleType = type.Split('[')[0];
+
+                        string text = "";
+                        foreach (string elem in (string[])result)
                         {
                             text += Convert.ToString(elem);
                         }
@@ -130,8 +159,8 @@ namespace Calculatrice
                     {
                         result = Convert.ToString(result);
                         display.Text += result + "\r\n";
-                    }  
-                }
+                    }
+                }                    
             }
             catch (TargetInvocationException ex)
             {
