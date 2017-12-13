@@ -41,8 +41,8 @@ namespace Adder
                     double argument = Math.Round(( 180 / Math.PI ) * Math.Atan(-im/re), 2);
                     
                     return String.Format("    Cartesien: {0}+({1}i)\r\n" +
-                                         "    Polaire:" +
-                                         "        Module: {2}" +
+                                         "    Polaire:\r\n" +
+                                         "        Module: {2}\r\n" +
                                          "        Arg: {3}°", re, im, modul, argument);
                 }
                 //léve une exception si une erreur est produite lors du calcul

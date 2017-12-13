@@ -1,0 +1,8 @@
+ > polaire 1;1 
+    Cartesien: 1+(1i)
+    Polaire:
+        Module: 1,41
+        Arg: -45°
+ > adder 1;2 
+3
+

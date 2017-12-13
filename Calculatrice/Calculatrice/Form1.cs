@@ -17,7 +17,7 @@ namespace Calculatrice
     public partial class Form1 : Form
     {
         private Dictionary<string, Type> dicoDll = new Dictionary<string, Type>();
-        private string pattern = @"^(?<function>[a-zA-Z]+) (?<args>[\;\d\s]+)$";
+        private string pattern = @"^(?<function>[a-zA-Z\d]+) (?<args>[\.\;\d\s]+)$";
 
         public Form1()
         {
@@ -30,7 +30,33 @@ namespace Calculatrice
                     Assembly dll = Assembly.LoadFile(dllName);
                     Type type = dll.GetExportedTypes()[0];
                     object o = Activator.CreateInstance(type);
-                    dicoDll.Add(((string)type.GetProperty("Name").GetValue(o)).ToLower(), type);
+
+                    try
+                    {
+                        int suffix = 1;
+                        string name = ((string)type.GetProperty("Name").GetValue(o)).ToLower();
+
+                        while (true)
+                        {
+                            if (!dicoDll.ContainsKey(name))
+                            {
+                                dicoDll.Add(name, type);
+                                break;
+                            }
+                            else
+                            {
+                                suffix++;
+                                name += Convert.ToString(suffix);
+                            }                           
+                        }
+                    }
+                    catch (TargetInvocationException ex)
+                    {
+                        if (ex.InnerException is EvaluationException)
+                        {
+                            MessageBox.Show(ex.InnerException.Message);
+                        }
+                    }
                 }
             }
         }
