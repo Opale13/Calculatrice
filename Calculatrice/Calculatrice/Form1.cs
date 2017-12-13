@@ -116,23 +116,21 @@ namespace Calculatrice
                     object result = function.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                            null, o, new object[] { element });
 
-                    try
+                    if (result is int[] || result is double[] || result is string[])
                     {
                         string text = "";
-                        foreach (double elem in (double[])result)
+                        foreach (object elem in (double[])result)
                         {
                             text += Convert.ToString(elem);
                         }
 
                         display.Text += text + "\r\n";
                     }
-                    catch
+                    else
                     {
                         result = Convert.ToString(result);
                         display.Text += result + "\r\n";
-                    }
-                    result = Convert.ChangeType(result, result.GetType());
-
+                    }  
                 }
             }
             catch (TargetInvocationException ex)
