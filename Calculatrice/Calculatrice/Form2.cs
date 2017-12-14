@@ -71,5 +71,10 @@ namespace Calculatrice
                 return "Cette fonction n'existe pas";
             }
         }
+
+        private void Form2_Load(object sender, EventArgs e)
+        {
+            textBox1.Select();
+        }
     }
 }

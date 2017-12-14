@@ -114,6 +114,7 @@ namespace Calculatrice
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            textBox1.Select();
         }
 
         private void Calculate()
