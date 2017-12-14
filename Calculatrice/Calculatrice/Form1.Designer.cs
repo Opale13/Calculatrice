@@ -38,7 +38,7 @@
             // 
             // AvailableFonction
             // 
-            this.AvailableFonction.Location = new System.Drawing.Point(319, 17);
+            this.AvailableFonction.Location = new System.Drawing.Point(324, 12);
             this.AvailableFonction.Name = "AvailableFonction";
             this.AvailableFonction.Size = new System.Drawing.Size(97, 34);
             this.AvailableFonction.TabIndex = 0;
@@ -48,7 +48,7 @@
             // 
             // Help
             // 
-            this.Help.Location = new System.Drawing.Point(319, 57);
+            this.Help.Location = new System.Drawing.Point(324, 52);
             this.Help.Name = "Help";
             this.Help.Size = new System.Drawing.Size(97, 34);
             this.Help.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(319, 287);
+            this.button1.Location = new System.Drawing.Point(324, 287);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 34);
             this.button1.TabIndex = 2;
@@ -68,7 +68,7 @@
             // 
             // SaveTrace
             // 
-            this.SaveTrace.Location = new System.Drawing.Point(319, 327);
+            this.SaveTrace.Location = new System.Drawing.Point(324, 327);
             this.SaveTrace.Name = "SaveTrace";
             this.SaveTrace.Size = new System.Drawing.Size(97, 20);
             this.SaveTrace.TabIndex = 3;
@@ -78,7 +78,7 @@
             // 
             // display
             // 
-            this.display.Location = new System.Drawing.Point(5, 17);
+            this.display.Location = new System.Drawing.Point(10, 12);
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
@@ -88,9 +88,10 @@
             // 
             // textBox1
             // 
-            this.textBox1.Location = new System.Drawing.Point(5, 295);
+            this.textBox1.Location = new System.Drawing.Point(10, 287);
+            this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(308, 20);
+            this.textBox1.Size = new System.Drawing.Size(308, 60);
             this.textBox1.TabIndex = 5;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
@@ -98,7 +99,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(426, 357);
+            this.AutoSize = true;
+            this.ClientSize = new System.Drawing.Size(433, 357);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.display);
             this.Controls.Add(this.SaveTrace);
@@ -106,6 +108,7 @@
             this.Controls.Add(this.Help);
             this.Controls.Add(this.AvailableFonction);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Calculatrice";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);

@@ -40,7 +40,7 @@
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
-            this.display.Size = new System.Drawing.Size(366, 155);
+            this.display.Size = new System.Drawing.Size(338, 155);
             this.display.TabIndex = 0;
             this.display.TextChanged += new System.EventHandler(this.display_TextChanged);
             // 
@@ -48,13 +48,13 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(7, 174);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(366, 20);
+            this.textBox1.Size = new System.Drawing.Size(338, 20);
             this.textBox1.TabIndex = 1;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // Calculatrice
             // 
-            this.Calculatrice.Location = new System.Drawing.Point(393, 12);
+            this.Calculatrice.Location = new System.Drawing.Point(351, 12);
             this.Calculatrice.Name = "Calculatrice";
             this.Calculatrice.Size = new System.Drawing.Size(98, 23);
             this.Calculatrice.TabIndex = 2;
@@ -64,7 +64,7 @@
             // 
             // Search
             // 
-            this.Search.Location = new System.Drawing.Point(393, 174);
+            this.Search.Location = new System.Drawing.Point(351, 174);
             this.Search.Name = "Search";
             this.Search.Size = new System.Drawing.Size(98, 23);
             this.Search.TabIndex = 3;
@@ -76,12 +76,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(503, 206);
+            this.ClientSize = new System.Drawing.Size(458, 206);
             this.Controls.Add(this.Search);
             this.Controls.Add(this.Calculatrice);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.display);
             this.Name = "Form2";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form2";
             this.ResumeLayout(false);
             this.PerformLayout();
