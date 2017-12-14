@@ -83,7 +83,7 @@
             this.Controls.Add(this.display);
             this.Name = "Form2";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form2";
+            this.Text = "Help";
             this.ResumeLayout(false);
             this.PerformLayout();
 

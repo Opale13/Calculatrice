@@ -17,7 +17,7 @@ namespace Calculatrice
     public partial class Form1 : Form
     {
         private Dictionary<string, Type> dicoDll = new Dictionary<string, Type>();
-        private string pattern = @"^(?<function>[a-zA-Z\d]+) (?<args>[-?\.\;\d\s]+)$";
+        private string pattern = @"^(?<function>[a-zA-Z\d]+) (?<args>[-\d;\,]+)$";
 
         public Form1()
         {
@@ -47,7 +47,7 @@ namespace Calculatrice
                             {
                                 suffix++;
                                 name += Convert.ToString(suffix);
-                            }                           
+                            }
                         }
                     }
                     catch (TargetInvocationException ex)
@@ -75,7 +75,6 @@ namespace Calculatrice
 
         private void display_TextChanged(object sender, EventArgs e)
         {
-
         }
 
         private void SaveTrace_Click(object sender, EventArgs e)
@@ -115,32 +114,32 @@ namespace Calculatrice
 
         private void Form1_Load(object sender, EventArgs e)
         {
-
         }
 
         private void Calculate()
         {
-            try
+            //génére les regex
+            Regex reg = new Regex(pattern);
+
+            //verifie si les regex match bien
+            string texte = textBox1.Text.Replace(".", ",");
+            if (reg.IsMatch(texte))
             {
-                //génére les regex
-                Regex reg = new Regex(pattern);
+                //recuperation des différents match
+                MatchCollection matches = reg.Matches(textBox1.Text.Replace(".", ",").ToLower());
+                //recupération des groupes matchés
+                GroupCollection groups = matches[0].Groups;
 
-                //verifie si les regex match bien
-                if (reg.IsMatch(textBox1.Text.Replace(".", ",")))
+                //convertion des arguments pour l'evaluation
+                string[] element = Convert.ToString(groups["args"]).Split(';');
+
+                try
                 {
-                    //recuperation des différents match
-                    MatchCollection matches = reg.Matches(textBox1.Text.Replace(".", ",").ToLower());
-                    //recupération des groupes matchés
-                    GroupCollection groups = matches[0].Groups;
-
-                    //convertion des arguments pour l'evaluation
-                    string[] element = Convert.ToString(groups["args"]).Split(';');
-
                     Type function = dicoDll[Convert.ToString(groups["function"])];
                     Object o = Activator.CreateInstance(function);
 
                     object result = function.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                           null, o, new object[] { element });
+                                            null, o, new object[] { element });
 
                     Type info = function.GetMethod("Evaluate").ReturnType;
 
@@ -186,18 +185,25 @@ namespace Calculatrice
                         result = Convert.ToString(result);
                         display.Text += result + "\r\n";
                     }
-                }                    
+                }
+                catch (TargetInvocationException ex)
+                {
+                    if (ex.InnerException is EvaluationException)
+                    {
+                        MessageBox.Show(ex.InnerException.Message);
+                        display.Text += "Erreur\r\n";
+                    }
+                }
+                catch
+                {
+                    MessageBox.Show("Votre fonction n'existe pas dans notre base de donnee.");
+                    display.Text += "Erreur\r\n";
+                }
             }
-            catch (TargetInvocationException ex)
+            else
             {
-                if (ex.InnerException is EvaluationException)
-                {
-                    MessageBox.Show(ex.InnerException.Message);
-                }
-                else
-                {
-                    MessageBox.Show("Suivez l'exemple svp !\r\n ex : 5 + 6 (oubliez pas les espaces!)");
-                }
+                MessageBox.Show("Veuillez respecter la mise en forme.\r\nPour plus d'informations, cliquez sur le bouton Help");
+                display.Text += "Erreur\r\n";
             }
         }
 

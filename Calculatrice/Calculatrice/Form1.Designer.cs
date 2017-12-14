@@ -38,6 +38,7 @@
             // 
             // AvailableFonction
             // 
+            this.AvailableFonction.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.AvailableFonction.Location = new System.Drawing.Point(324, 12);
             this.AvailableFonction.Name = "AvailableFonction";
             this.AvailableFonction.Size = new System.Drawing.Size(97, 34);
@@ -48,6 +49,7 @@
             // 
             // Help
             // 
+            this.Help.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.Help.Location = new System.Drawing.Point(324, 52);
             this.Help.Name = "Help";
             this.Help.Size = new System.Drawing.Size(97, 34);
@@ -58,6 +60,7 @@
             // 
             // button1
             // 
+            this.button1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button1.Location = new System.Drawing.Point(324, 287);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(97, 34);
@@ -68,6 +71,7 @@
             // 
             // SaveTrace
             // 
+            this.SaveTrace.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.SaveTrace.Location = new System.Drawing.Point(324, 327);
             this.SaveTrace.Name = "SaveTrace";
             this.SaveTrace.Size = new System.Drawing.Size(97, 20);
@@ -78,16 +82,22 @@
             // 
             // display
             // 
+            this.display.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.display.Location = new System.Drawing.Point(10, 12);
             this.display.Multiline = true;
             this.display.Name = "display";
             this.display.ReadOnly = true;
+            this.display.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.display.Size = new System.Drawing.Size(308, 269);
             this.display.TabIndex = 4;
             this.display.TextChanged += new System.EventHandler(this.display_TextChanged);
             // 
             // textBox1
             // 
+            this.textBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.textBox1.Location = new System.Drawing.Point(10, 287);
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
@@ -99,7 +109,6 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.AutoSize = true;
             this.ClientSize = new System.Drawing.Size(433, 357);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.display);

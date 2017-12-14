@@ -1,8 +1,25 @@
- > polaire 1;1 
-    Cartesien: 1+(1i)
-    Polaire:
-        Module: 1,41
-        Arg: -45°
- > adder 1;2 
+ > A 
+Erreur
+ > Adderr 1;2 
+Erreur
+ > Adder 1;2;3 
+Erreur
+ > Adder 1;2 
 3
+ > Adder 1;2;3 
+Erreur
+ > Substractor 1;2;3 
+Erreur
+ > Subtractor 1;2;3 
+Erreur
+ > Racine 1;2;3;1 
+Erreur
+ > Multiplier 1;2 
+2
+ > Divisor 1;0 
+Erreur
+ > Diviseur 1.5;2 
+Erreur
+ > Divisor 1.5;2 
+0,75
 
