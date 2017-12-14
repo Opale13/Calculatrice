@@ -58,6 +58,13 @@ namespace UnitTest
 
             Assert.That (-2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "-1", "-1" } })));
+
+            /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
+            Assert.That(-2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "-1", "-1", "1" } })));
+
+            Assert.That(-2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "-1", "truc" } })));
         }
     }
 
@@ -112,6 +119,13 @@ namespace UnitTest
 
             Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0.5", "0.5" } })));
+
+            /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
+            Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "0.5", "0.5", "32" } })));
+
+            Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "0.5", "machin" } })));
         }
     }
 
@@ -166,6 +180,13 @@ namespace UnitTest
 
             Assert.That(0.25, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0,5", "0,5" } })));
+
+            /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
+            Assert.That(20, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "42", "brol" } })));
+
+            Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "0,5", "0,5" ,"-1" ,"-10000"} })));
         }
     }
 
@@ -220,6 +241,16 @@ namespace UnitTest
 
             Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0.5", "0.5" } })));
+
+            /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
+            Assert.That(0.25, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "42", "brol" } })));
+
+            Assert.That(0.25, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "42", "0" } })));
+
+            Assert.That(42, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "0,5", "0,5", "truc", "-10000" } })));
         }
     }
 
@@ -275,6 +306,14 @@ namespace UnitTest
 
             Assert.That(new double[] { 0, 0, 0 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "1", "1", "1" } })));
+
+            /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
+            Assert.That(new double[] { 0, 0, 0 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "1", "42", "1", "6" } })));
+
+            Assert.That(new double[] { 32, 0, 45 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                                    null, o, new object[] { new string[] { "1", "truc", "1" } })));
+
         }
     }
 
@@ -339,6 +378,19 @@ namespace UnitTest
                         "        Module: 4,74\r\n" +
                         "        Arg: -108,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "-1,5", "-4,5" } })));
+
+            /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
+            Assert.That("    Cartesien: -51+(-54i)\r\n" +
+                        "    Polaire:\r\n" +
+                        "        Module: 4,74\r\n" +
+                        "        Arg: -10°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "-1,5", "-4,5", "50" } })));
+
+            Assert.That("    Cartesien: -23+(-45i)\r\n" +
+                        "    Polaire:\r\n" +
+                        "        Module: 42\r\n" +
+                        "        Arg: -100°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "-1,5", "machin" } })));
         }
     }
 
@@ -399,6 +451,13 @@ namespace UnitTest
                         "    Variance: 666,69\r\n",
                         "    Deviation: 25,82" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0", "-10", "32", "55" } })));
+
+            /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
+            Assert.That(new string[] { "    Moyenne: 19,25\r\n",
+                        "    Variance: 666\r\n",
+                        "    Deviation: 32" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "0", "-10", "machin", "55" } })));
+
         }
     }
 }
