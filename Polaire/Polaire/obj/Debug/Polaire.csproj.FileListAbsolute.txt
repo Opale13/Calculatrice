@@ -19,3 +19,13 @@ C:\Users\le-so\Github\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.csprojRes
 C:\Users\le-so\Github\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.csproj.CoreCompileInputs.cache
 C:\Users\le-so\Github\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.dll
 C:\Users\le-so\Github\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.pdb
+<<<<<<< HEAD
+=======
+C:\git\Projet2_POObis\Polaire\Polaire\bin\Debug\Polaire.dll
+C:\git\Projet2_POObis\Polaire\Polaire\bin\Debug\Polaire.pdb
+C:\git\Projet2_POObis\Polaire\Polaire\bin\Debug\SuperComputer.dll
+C:\git\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.csprojResolveAssemblyReference.cache
+C:\git\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.csproj.CoreCompileInputs.cache
+C:\git\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.dll
+C:\git\Projet2_POObis\Polaire\Polaire\obj\Debug\Polaire.pdb
+>>>>>>> c8a584236543f21bd7b29ee471323c51d0687fd4

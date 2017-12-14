@@ -17,7 +17,12 @@ namespace Calculatrice
     public partial class Form1 : Form
     {
         private Dictionary<string, Type> dicoDll = new Dictionary<string, Type>();
+<<<<<<< HEAD
         private string pattern = @"^(?<function>[a-zA-Z\d]+) (?<args>[-?\.\;\d\s]+)$";
+=======
+        //rajouter valeur negative regex
+        private string pattern = @"^(?<function>[a-zA-Z\d]+) (?<args>[\.\;\d\s]+)$";
+>>>>>>> c8a584236543f21bd7b29ee471323c51d0687fd4
 
         public Form1()
         {

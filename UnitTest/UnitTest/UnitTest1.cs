@@ -17,10 +17,16 @@ namespace UnitTest
         private Type type = null;
         private Object o = null;
 
+        private string helpMessage = "Cette fonction permet d'additionner/soustraire deux valeurs entre elles.\r\n" +
+                                     "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
+                                     "double";
+
+        private string[] parametersName = { "first", "second" };
+
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\Users\le-so\Desktop\Projet2_POO\dll\Adder.dll");
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Adder.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }        
@@ -30,14 +36,18 @@ namespace UnitTest
         {
             Assert.That ("Adder", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
-
-        /*
+        
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That("test", Is.EqualTo((string)type.HelpMessage));
+            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
+
+        [Test()]
+        public void TestParametersName()
+        {
+            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+        }
 
         [Test()]
         public void TestEvaluate()
@@ -62,10 +72,16 @@ namespace UnitTest
         private Type type = null;
         private Object o = null;
 
+        private string helpMessage = "Cette fonction permet de soustraire deux valeurs entre elles.\r\n" +
+                                     "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
+                                     "double";
+
+        private string[] parametersName = { "first", "second" };
+
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POO\dll\Subtractor.dll");
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Subtractor.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -75,15 +91,18 @@ namespace UnitTest
         {
             Assert.That("Subtractor", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
-    
-        /*
+        
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That("test", Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
-        
+
+        [Test()]
+        public void TestParametersName()
+        {
+            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+        }
 
         [Test()]
         public void TestEvaluate()
@@ -112,10 +131,16 @@ namespace UnitTest
         private Type type = null;
         private Object o = null;
 
+        private string helpMessage = "Cette fonction permet de multiplier/diviser deux valeurs entre elles.\r\n" +
+                                     "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
+                                     "double";
+
+        private string[] parametersName = { "numerator", "denominator" };
+
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POO\dll\Multiplier.dll");
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Multiplier.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -126,13 +151,17 @@ namespace UnitTest
             Assert.That("Multiplier", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
 
-        /*
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That("test", Is.EqualTo((string)type.HelpMessage));
+            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
+
+        [Test()]
+        public void TestParametersName()
+        {
+            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+        }
 
         [Test()]
         public void TestEvaluate()
@@ -160,10 +189,16 @@ namespace UnitTest
         private Type type = null;
         private Object o = null;
 
+        private string helpMessage = "Cette fonction permet de diviser deux valeurs entre elles.\r\n" +
+                                     "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
+                                     "double";
+
+        private string[] parametersName = { "numerator", "denominator" };
+
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POO\dll\Divisor.dll");
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Divisor.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -173,14 +208,18 @@ namespace UnitTest
         {
             Assert.That("Divisor", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
-
-        /*
+        
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That("test", Is.EqualTo((string)type.HelpMessage));
+            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
+
+        [Test()]
+        public void TestParametersName()
+        {
+            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+        }
 
         [Test()]
         public void TestEvaluate()
@@ -218,7 +257,7 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POO\dll\Racine.dll");
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Racine.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -278,7 +317,7 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POO\dll\Polaire.dll");
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Polaire.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -306,21 +345,21 @@ namespace UnitTest
         public void TestEvaluate()
         {
             Assert.That("    Cartesien: 1+(1i)\r\n" +
-                        "    Polaire:" +
-                        "        Module: 1,41" +
-                        "        Arg: -45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "    Polaire:\r\n" +
+                        "        Module: 1,41\r\n" +
+                        "        Arg: 45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "1", "1" } })));
 
             Assert.That("    Cartesien: 2+(-4i)\r\n" +
-                        "    Polaire:" +
-                        "        Module: 4,47" +
-                        "        Arg: 63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "    Polaire:\r\n" +
+                        "        Module: 4,47\r\n" +
+                        "        Arg: -63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "2", "-4" } })));
 
             Assert.That("    Cartesien: -1,33+(4,5i)\r\n" +
-                        "    Polaire:" +
-                        "        Module: 4,69" +
-                        "        Arg: 73,53°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "    Polaire:\r\n" +
+                        "        Module: 4,69\r\n" +
+                        "        Arg: -73,53°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "-1,33", "4,5" } })));
 
             /*Test Erreur [OK]
