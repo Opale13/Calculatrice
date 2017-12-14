@@ -26,7 +26,8 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Adder.dll");
+            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
+            dll = Assembly.LoadFile(path + @"\Adder.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }        
@@ -57,11 +58,6 @@ namespace UnitTest
 
             Assert.That (-2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "-1", "-1" } })));
-
-            /*Test Erreur [OK]
-            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                           null, o, new object[] { new string[] { "2", "truc" } })));
-            */
         }
     }
 
@@ -81,7 +77,8 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Subtractor.dll");
+            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
+            dll = Assembly.LoadFile(path + @"\Subtractor.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -115,12 +112,6 @@ namespace UnitTest
 
             Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0.5", "0.5" } })));
-
-            /*Test Erreur [OK]
-            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                           null, o, new object[] { new string[] { "2", "0"} })));
-            */
-
         }
     }
 
@@ -140,7 +131,8 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Multiplier.dll");
+            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
+            dll = Assembly.LoadFile(path + @"\Multiplier.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -174,11 +166,6 @@ namespace UnitTest
 
             Assert.That(0.25, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0,5", "0,5" } })));
-
-            /*Test Erreur [OK]
-            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                           null, o, new object[] { new string[] { "2", "truc" } })));
-            */
         }
     }
 
@@ -198,7 +185,8 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Divisor.dll");
+            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
+            dll = Assembly.LoadFile(path + @"\Divisor.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -232,12 +220,6 @@ namespace UnitTest
 
             Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0.5", "0.5" } })));
-
-            /*Test Erreur [OK]
-            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                           null, o, new object[] { new string[] { "2", "0"} })));
-            */
-            
         }
     }
 
@@ -257,7 +239,8 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Racine.dll");
+            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
+            dll = Assembly.LoadFile(path + @"\Racine.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -292,12 +275,6 @@ namespace UnitTest
 
             Assert.That(new double[] { 0, 0, 0 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "1", "1", "1" } })));
-
-            /*Test Erreur [OK]
-            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                           null, o, new object[] { new string[] { "2", "0"} })));
-            */
-
         }
     }
 
@@ -317,7 +294,8 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Polaire.dll");
+            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
+            dll = Assembly.LoadFile(path + @"\Polaire.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -347,26 +325,20 @@ namespace UnitTest
             Assert.That("    Cartesien: 1+(1i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 1,41\r\n" +
-                        "        Arg: -45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: 45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "1", "1" } })));
 
             Assert.That("    Cartesien: 2+(-4i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 4,47\r\n" +
-                        "        Arg: 63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: -63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "2", "-4" } })));
 
-            Assert.That("    Cartesien: -1,33+(4,5i)\r\n" +
+            Assert.That("    Cartesien: -1,5+(-4,5i)\r\n" +
                         "    Polaire:\r\n" +
-                        "        Module: 4,69\r\n" +
-                        "        Arg: 73,53°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1,33", "4,5" } })));
-
-            /*Test Erreur [OK]
-            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                           null, o, new object[] { new string[] { "2", "0"} })));
-            */
-
+                        "        Module: 4,74\r\n" +
+                        "        Arg: -108,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "-1,5", "-4,5" } })));
         }
     }
 
@@ -385,7 +357,8 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Stat.dll");
+            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
+            dll = Assembly.LoadFile(path + @"\Stat.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }
@@ -426,12 +399,6 @@ namespace UnitTest
                         "    Variance: 666,69\r\n",
                         "    Deviation: 25,82" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "0", "-10", "32", "55" } })));
-                    
-            /*Test Erreur [OK]
-            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                           null, o, new object[] { new string[] { "2", "truc"} })));
-            */
-
         }
     }
 }
