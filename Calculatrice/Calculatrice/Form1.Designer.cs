@@ -104,6 +104,7 @@
             this.textBox1.Size = new System.Drawing.Size(308, 60);
             this.textBox1.TabIndex = 5;
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // Form1
             // 

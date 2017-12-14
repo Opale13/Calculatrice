@@ -73,6 +73,16 @@ namespace Calculatrice
 
         }
 
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                display.Text += string.Format(" > {0} \r\n", this.textBox1.Text);
+                Calculate();
+                textBox1.Text = "";
+            }
+        }
+
         private void display_TextChanged(object sender, EventArgs e)
         {
         }

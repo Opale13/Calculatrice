@@ -25,6 +25,17 @@ namespace Calculatrice
 
         }
 
+
+        private void textBox1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                display.Text = string.Format("> {0} \r\n", textBox1.Text);
+                display.Text = string.Format("{0} \r\n", Help());
+                textBox1.Text = "";
+            }
+        }
+
         private void display_TextChanged(object sender, EventArgs e)
         {
 
@@ -57,7 +68,7 @@ namespace Calculatrice
 
                 string[] param = (string[])dicoDll[function].GetProperty("ParametersName").GetValue(o);
 
-                result += "Les paramètres à donner:\r\n";
+                result += "Le(s) paramètre(s) à donner:\r\n";
 
                 foreach (string para in param)
                 {
