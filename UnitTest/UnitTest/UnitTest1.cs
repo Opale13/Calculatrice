@@ -20,7 +20,7 @@ namespace UnitTest
         [SetUp()]
         public void Init()
         {
-            dll = Assembly.LoadFile(@"C:\Users\le-so\Desktop\Projet2_POO\dll\Adder.dll");
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Adder.dll");
             type = dll.GetExportedTypes()[0];
             o = Activator.CreateInstance(type);
         }        
@@ -30,15 +30,13 @@ namespace UnitTest
         {
             Assert.That ("Adder", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
-
-        /*
+        
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That("test", Is.EqualTo((string)type.HelpMessage));
+            Assert.That("test", Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
-
+        
         [Test()]
         public void TestEvaluate()
         {
@@ -75,15 +73,12 @@ namespace UnitTest
         {
             Assert.That("Subtractor", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
-    
-        /*
+        
         [Test()]
         public void TestHelpMessage()
         {
             Assert.That("test", Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
-        
 
         [Test()]
         public void TestEvaluate()
@@ -126,13 +121,11 @@ namespace UnitTest
             Assert.That("Multiplier", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
 
-        /*
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That("test", Is.EqualTo((string)type.HelpMessage));
+            Assert.That("test", Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
 
         [Test()]
         public void TestEvaluate()
@@ -173,14 +166,12 @@ namespace UnitTest
         {
             Assert.That("Divisor", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
         }
-
-        /*
+        
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That("test", Is.EqualTo((string)type.HelpMessage));
+            Assert.That("test", Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
         }
-        */
 
         [Test()]
         public void TestEvaluate()
@@ -308,19 +299,19 @@ namespace UnitTest
             Assert.That("    Cartesien: 1+(1i)\r\n" +
                         "    Polaire:" +
                         "        Module: 1,41" +
-                        "        Arg: -45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: 45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "1", "1" } })));
 
             Assert.That("    Cartesien: 2+(-4i)\r\n" +
                         "    Polaire:" +
                         "        Module: 4,47" +
-                        "        Arg: 63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: -63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "2", "-4" } })));
 
             Assert.That("    Cartesien: -1,33+(4,5i)\r\n" +
                         "    Polaire:" +
                         "        Module: 4,69" +
-                        "        Arg: 73,53°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: -73,53°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "-1,33", "4,5" } })));
 
             /*Test Erreur [OK]
