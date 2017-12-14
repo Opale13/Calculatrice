@@ -138,7 +138,6 @@ namespace Calculatrice
 
                     Type function = dicoDll[Convert.ToString(groups["function"])];
                     Object o = Activator.CreateInstance(function);
-
                     object result = function.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                            null, o, new object[] { element });
 
