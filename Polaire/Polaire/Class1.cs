@@ -38,7 +38,7 @@ namespace Adder
                     double im = Convert.ToDouble(args[1]);
 
                     double modul = Math.Round(Math.Pow(Math.Pow(re, 2) + Math.Pow(im, 2), 0.5), 2);
-                    double argument = Math.Round(( 180 / Math.PI ) * Math.Atan(im/re), 2);
+                    double argument = Math.Round(( 180 / Math.PI ) * Math.Atan2(im,re), 2);
                     
                     return String.Format("    Cartesien: {0}+({1}i)\r\n" +
                                          "    Polaire:\r\n" +
