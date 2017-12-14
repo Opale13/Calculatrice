@@ -347,24 +347,89 @@ namespace UnitTest
             Assert.That("    Cartesien: 1+(1i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 1,41\r\n" +
-                        "        Arg: 45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: -45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "1", "1" } })));
 
             Assert.That("    Cartesien: 2+(-4i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 4,47\r\n" +
-                        "        Arg: -63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: 63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "2", "-4" } })));
 
             Assert.That("    Cartesien: -1,33+(4,5i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 4,69\r\n" +
-                        "        Arg: -73,53°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                        "        Arg: 73,53°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                                         null, o, new object[] { new string[] { "-1,33", "4,5" } })));
 
             /*Test Erreur [OK]
             Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                            null, o, new object[] { new string[] { "2", "0"} })));
+            */
+
+        }
+    }
+
+    [TestFixture()]
+    public class TestStat
+    {
+        private Assembly dll;
+        private Type type = null;
+        private Object o = null;
+
+        private string helpMessage = "Cette fonction permet de calculer la moyenne, la variance\r\n" +
+                                     "et l'ecart type des données fournis.";
+
+        private string[] parametersName = { "data" };
+
+        [SetUp()]
+        public void Init()
+        {
+            dll = Assembly.LoadFile(@"C:\git\Projet2_POObis\dll\Stat.dll");
+            type = dll.GetExportedTypes()[0];
+            o = Activator.CreateInstance(type);
+        }
+
+        [Test()]
+        public void TestName()
+        {
+            Assert.That("Stat", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+        }
+
+
+        [Test()]
+        public void TestHelpMessage()
+        {
+            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+        }
+
+        [Test()]
+        public void TestParametersName()
+        {
+            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+        }
+
+        [Test()]
+        public void TestEvaluate()
+        {
+            Assert.That(new string[] { "    Moyenne: 1,5\r\n",
+                        "    Variance: 0,25\r\n",
+                        "    Deviation: 0,5" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "1", "2" } })));
+
+            Assert.That(new string[] { "    Moyenne: -0,5\r\n",
+                        "    Variance: 11,25\r\n",
+                        "    Deviation: 3,35" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "-2", "4", "-5", "1" } })));
+
+            Assert.That(new string[] { "    Moyenne: 19,25\r\n",
+                        "    Variance: 666,69\r\n",
+                        "    Deviation: 25,82" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                                                        null, o, new object[] { new string[] { "0", "-10", "32", "55" } })));
+                    
+            /*Test Erreur [OK]
+            Assert.That(3, Is.EqualTo(type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
+                           null, o, new object[] { new string[] { "2", "truc"} })));
             */
 
         }
