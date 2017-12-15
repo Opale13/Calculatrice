@@ -1,6 +1,0 @@
-C:\Users\le-so\Desktop\Projet2_POO\Racine\Racine\bin\Debug\Racine.dll
-C:\Users\le-so\Desktop\Projet2_POO\Racine\Racine\bin\Debug\Racine.pdb
-C:\Users\le-so\Desktop\Projet2_POO\Racine\Racine\bin\Debug\SuperComputer.dll
-C:\Users\le-so\Desktop\Projet2_POO\Racine\Racine\obj\Debug\Racine.csproj.CoreCompileInputs.cache
-C:\Users\le-so\Desktop\Projet2_POO\Racine\Racine\obj\Debug\Racine.dll
-C:\Users\le-so\Desktop\Projet2_POO\Racine\Racine\obj\Debug\Racine.pdb
