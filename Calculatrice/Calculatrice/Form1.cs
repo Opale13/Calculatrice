@@ -17,6 +17,8 @@ namespace Calculatrice
     public partial class Form1 : Form
     {
         private Dictionary<string, Type> dicoDll = new Dictionary<string, Type>();
+
+        //regular expression to capture the command
         private string pattern = @"^(?<function>[a-zA-Z\d]+) (?<args>[-\d;\,]+)$";
 
         public Form1()
@@ -49,6 +51,7 @@ namespace Calculatrice
                                 dicoDll.Add(name, type);
                                 break;
                             }
+                            //if the name of the dll is already present we add a suffix.
                             else
                             {
                                 suffix++;
@@ -56,8 +59,7 @@ namespace Calculatrice
                             }
                         }
                     }
-
-
+                    //capture exceptions
                     catch (TargetInvocationException ex)
                     {
                         if (ex.InnerException is EvaluationException)
@@ -81,11 +83,12 @@ namespace Calculatrice
 
         }
 
+        //if you press enter and not the "Compute" button
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
             {
-                display.Text += string.Format(" > {0} \r\n", this.textBox1.Text);
+                display.Text += string.Format(" > {0} \r\n", textBox1.Text);
                 Calculate();
                 textBox1.Text = "";
             }
@@ -95,13 +98,14 @@ namespace Calculatrice
         {
         }
 
+        //Save the calculation of the session in a "Trace.txt" file
         private void SaveTrace_Click(object sender, EventArgs e)
         {
             try
             {
                 StreamWriter sw = new StreamWriter("../../../Trace.txt");
 
-                sw.WriteLine(this.display.Text);
+                sw.WriteLine(display.Text);
                 sw.Close();
             }
             catch (Exception a)
@@ -123,7 +127,8 @@ namespace Calculatrice
             }
             MessageBox.Show(availableFonction);
         }
-
+        
+        //run Form2 for help messages
         private void Help_Click(object sender, EventArgs e)
         {
             Form2 testDialog = new Form2();
@@ -132,7 +137,7 @@ namespace Calculatrice
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            textBox1.Select();
+            textBox1.Select(); //place the cursor in the input box
         }
 
         private void Calculate()
@@ -154,15 +159,19 @@ namespace Calculatrice
 
                 try
                 {
+
                     Type function = dicoDll[Convert.ToString(groups["function"])];
                     Object o = Activator.CreateInstance(function);
+
                     object result = function.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                             null, o, new object[] { element });
 
                     Type info = function.GetMethod("Evaluate").ReturnType;
 
+                    //recovery of the return type of the Evaluate method
                     string type = Convert.ToString(info).Split('.')[1].ToLower();
 
+                    //processes the return values, according to their type
                     if (type == "double[]")
                     {
                         string simpleType = type.Split('[')[0];
@@ -225,6 +234,7 @@ namespace Calculatrice
             }
         }
 
+        //getter for form2
         public Dictionary<string, Type> DicoDll
         {
             get { return dicoDll; }
