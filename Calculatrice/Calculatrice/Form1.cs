@@ -143,6 +143,11 @@ namespace Calculatrice
             textBox1.Select(); 
         }
 
+        private void clear_Click(object sender, EventArgs e)
+        {
+            display.Text = "";
+        }
+
         private void Calculate()
         {
             //generate the regex
