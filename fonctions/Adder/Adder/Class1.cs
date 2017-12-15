@@ -9,7 +9,7 @@ namespace Adder
 {
     public class Adder : Function<double>
     {
-        private string helpMessage = "Cette fonction permet d'additionner/soustraire deux valeurs entre elles.\r\n" +
+        private string helpMessage = "Cette fonction permet d'additionner deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
                                      "double";
 

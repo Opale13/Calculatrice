@@ -9,7 +9,7 @@ namespace Multiplier
 {
     public class Multiplier : Function<double>
     {
-        private string helpMessage = "Cette fonction permet de multiplier/diviser deux valeurs entre elles.\r\n" +
+        private string helpMessage = "Cette fonction permet de multiplier deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
                                      "double";
 

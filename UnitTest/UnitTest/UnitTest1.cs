@@ -15,7 +15,7 @@ namespace UnitTest
     {
         private Adder.Adder adder = new Adder.Adder();
 
-        private string helpMessage = "Cette fonction permet d'additionner/soustraire deux valeurs entre elles.\r\n" +
+        private string helpMessage = "Cette fonction permet d'additionner deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
                                      "double";
 
@@ -103,7 +103,7 @@ namespace UnitTest
     {
         private Multiplier.Multiplier mult = new Multiplier.Multiplier();
 
-        private string helpMessage = "Cette fonction permet de multiplier/diviser deux valeurs entre elles.\r\n" +
+        private string helpMessage = "Cette fonction permet de multiplier deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
                                      "double";
 
