@@ -103,7 +103,7 @@ namespace Calculatrice
         {
             try
             {
-                StreamWriter sw = new StreamWriter("../../../Trace.txt");
+                StreamWriter sw = new StreamWriter("../../../../Trace.txt");
 
                 sw.WriteLine(display.Text);
                 sw.Close();
@@ -118,6 +118,7 @@ namespace Calculatrice
             }
         }
 
+        //
         private void AvailableFonction_Click(object sender, EventArgs e)
         {
             string availableFonction = "Fonctions disponibles :\r\n";
@@ -137,24 +138,25 @@ namespace Calculatrice
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            textBox1.Select(); //place the cursor in the input box
+            //place the cursor in the input box
+            textBox1.Select(); 
         }
 
         private void Calculate()
         {
-            //génére les regex
+            //generate the regex
             Regex reg = new Regex(pattern);
 
-            //verifie si les regex match bien
+            //check if the regex match well
             string texte = textBox1.Text.Replace(".", ",");
             if (reg.IsMatch(texte))
             {
-                //recuperation des différents match
-                MatchCollection matches = reg.Matches(textBox1.Text.Replace(".", ",").ToLower());
-                //recupération des groupes matchés
+                //recovery of different matches
+                MatchCollection matches = reg.Matches(texte.ToLower());
+                //recovery of matched groups
                 GroupCollection groups = matches[0].Groups;
 
-                //convertion des arguments pour l'evaluation
+                //conversion of arguments for evaluation
                 string[] element = Convert.ToString(groups["args"]).Split(';');
 
                 try
@@ -166,17 +168,16 @@ namespace Calculatrice
                     object result = function.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
                                             null, o, new object[] { element });
 
-                    Type info = function.GetMethod("Evaluate").ReturnType;
-
                     //recovery of the return type of the Evaluate method
+                    Type info = function.GetMethod("Evaluate").ReturnType;                    
                     string type = Convert.ToString(info).Split('.')[1].ToLower();
 
                     //processes the return values, according to their type
                     if (type == "double[]")
                     {
                         string simpleType = type.Split('[')[0];
-
                         string text = "";
+
                         foreach (double elem in (double[])result)
                         {
                             text += Convert.ToString(elem);
@@ -188,6 +189,7 @@ namespace Calculatrice
                     {
                         string simpleType = type.Split('[')[0];
                         string text = "";
+
                         foreach (int elem in (int[])result)
                         {
                             text += Convert.ToString(elem);
@@ -198,8 +200,8 @@ namespace Calculatrice
                     else if (type == "string[]")
                     {
                         string simpleType = type.Split('[')[0];
-
                         string text = "";
+
                         foreach (string elem in (string[])result)
                         {
                             text += Convert.ToString(elem);
@@ -234,7 +236,7 @@ namespace Calculatrice
             }
         }
 
-        //getter for form2
+        //getter for Form2
         public Dictionary<string, Type> DicoDll
         {
             get { return dicoDll; }

@@ -1,0 +1,7 @@
+ > adder 1;2 
+3
+ > stat 1;2 
+    Moyenne: 1,5
+    Variance: 0,25
+    Deviation: 0,5
+
