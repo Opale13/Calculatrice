@@ -71,6 +71,7 @@ namespace Calculatrice
             }
         }
 
+        //starts the action of the compute button
         private void button1_Click(object sender, EventArgs e)
         {
             display.Text += string.Format(" > {0} \r\n", this.textBox1.Text);
@@ -118,7 +119,7 @@ namespace Calculatrice
             }
         }
 
-        //
+        //shows the available functions
         private void AvailableFonction_Click(object sender, EventArgs e)
         {
             string availableFonction = "Fonctions disponibles :\r\n";

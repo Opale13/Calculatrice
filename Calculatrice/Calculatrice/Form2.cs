@@ -25,7 +25,7 @@ namespace Calculatrice
 
         }
 
-
+        //if you press enter and not the "Search" button
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Enter)
@@ -38,9 +38,9 @@ namespace Calculatrice
 
         private void display_TextChanged(object sender, EventArgs e)
         {
-
         }
 
+        //starts the action of the search button
         private void Search_Click(object sender, EventArgs e)
         {
             display.Text = string.Format("> {0} \r\n", textBox1.Text);
@@ -53,10 +53,13 @@ namespace Calculatrice
             Close();
         }
 
+        //displays a help message depending on the command
         private string Help()
         {
-            string function = this.textBox1.Text.ToLower();
+            //desired command
+            string function = textBox1.Text.ToLower();
 
+            //dll dictionary recovery
             Form1 test = new Form1();
             Dictionary<string, Type> dicoDll = test.DicoDll;
 
@@ -64,17 +67,22 @@ namespace Calculatrice
             {
                 string result = "";
                 object o = Activator.CreateInstance(dicoDll[function]);
+
+                //recovery of the help message associated with the command
                 result += (string) dicoDll[function].GetProperty("HelpMessage").GetValue(o) + "\r\n\r\n";
 
-                string[] param = (string[])dicoDll[function].GetProperty("ParametersName").GetValue(o);
+                //recovering parameter names
+                string[] param = (string[]) dicoDll[function].GetProperty("ParametersName").GetValue(o);
 
                 result += "Le(s) paramètre(s) à donner:\r\n";
 
+                //shaping
                 foreach (string para in param)
                 {
                     result += "\t-->" + para + "\r\n";
                 }
                 result += "\r\n";
+
                 return result;
             }
             catch
@@ -85,6 +93,7 @@ namespace Calculatrice
 
         private void Form2_Load(object sender, EventArgs e)
         {
+            //place the cursor in the input box
             textBox1.Select();
         }
     }
