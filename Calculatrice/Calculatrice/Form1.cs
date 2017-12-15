@@ -22,11 +22,14 @@ namespace Calculatrice
         public Form1()
         {
             InitializeComponent();
+
+            //creation of the dictionary containing "functions"
             string path = Path.GetFullPath(@"..\..\..\..\dll");
             foreach (string dllName in Directory.GetFiles(path))
             {
                 if (Path.GetExtension(dllName) == ".dll")
                 {
+                    //dynamic loading of dll by reflection
                     Assembly dll = Assembly.LoadFile(dllName);
                     Type type = dll.GetExportedTypes()[0];
                     object o = Activator.CreateInstance(type);
@@ -34,8 +37,11 @@ namespace Calculatrice
                     try
                     {
                         int suffix = 1;
+                        //recovering the return value of the "Name" method
                         string name = ((string)type.GetProperty("Name").GetValue(o)).ToLower();
 
+                        //Allows you to add a function that has the same name as an already present 
+                        //in the dictionary
                         while (true)
                         {
                             if (!dicoDll.ContainsKey(name))
@@ -50,6 +56,8 @@ namespace Calculatrice
                             }
                         }
                     }
+
+
                     catch (TargetInvocationException ex)
                     {
                         if (ex.InnerException is EvaluationException)

@@ -93,3 +93,10 @@ C:\Users\le-so\Github\Projet2_POObis\UnitTest\UnitTest\obj\Debug\UnitTest.csproj
 C:\Users\le-so\Github\Projet2_POObis\UnitTest\UnitTest\obj\Debug\UnitTest.csproj.CoreCompileInputs.cache
 C:\Users\le-so\Github\Projet2_POObis\UnitTest\UnitTest\obj\Debug\UnitTest.dll
 C:\Users\le-so\Github\Projet2_POObis\UnitTest\UnitTest\obj\Debug\UnitTest.pdb
+C:\git\Projet2_POObis\UnitTest\UnitTest\bin\Debug\Adder.dll
+C:\git\Projet2_POObis\UnitTest\UnitTest\bin\Debug\Divisor.dll
+C:\git\Projet2_POObis\UnitTest\UnitTest\bin\Debug\Multiplier.dll
+C:\git\Projet2_POObis\UnitTest\UnitTest\bin\Debug\Polaire.dll
+C:\git\Projet2_POObis\UnitTest\UnitTest\bin\Debug\Racine.dll
+C:\git\Projet2_POObis\UnitTest\UnitTest\bin\Debug\Stat.dll
+C:\git\Projet2_POObis\UnitTest\UnitTest\bin\Debug\Subtractor.dll

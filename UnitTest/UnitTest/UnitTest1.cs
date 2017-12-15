@@ -13,67 +13,50 @@ namespace UnitTest
     [TestFixture()]
     public class TestAdder
     {
-        private Assembly dll;
-        private Type type = null;
-        private Object o = null;
+        private Adder.Adder adder = new Adder.Adder();
 
         private string helpMessage = "Cette fonction permet d'additionner/soustraire deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
                                      "double";
 
-        private string[] parametersName = { "first", "second" };
-
-        [SetUp()]
-        public void Init()
-        {
-            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
-            dll = Assembly.LoadFile(path + @"\Adder.dll");
-            type = dll.GetExportedTypes()[0];
-            o = Activator.CreateInstance(type);
-        }        
+        private string[] parametersName = { "first", "second" };      
 
         [Test()]
         public void TestName()
         {
-            Assert.That ("Adder", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+            Assert.That("Adder", Is.EqualTo(adder.Name));
         }
         
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(adder.HelpMessage));
         }
 
         [Test()]
         public void TestParametersName()
         {
-            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+            Assert.That(parametersName, Is.EqualTo(adder.ParametersName));
         }
 
         [Test()]
         public void TestEvaluate()
         {
-            Assert.That (3, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string []{ "2", "1" } })));
+            Assert.That(3, Is.EqualTo(adder.Evaluate(new string[] { "2", "1" })));
 
-            Assert.That (-2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1", "-1" } })));
+            Assert.That(-2, Is.EqualTo(adder.Evaluate(new string[] { "-1", "-1" })));
 
             /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
-            Assert.That(-2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1", "-1", "1" } })));
+            Assert.That(delegate { adder.Evaluate(new string[] { "-1", "-1", "1" }); }, Throws.TypeOf<EvaluationException>());
 
-            Assert.That(-2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1", "truc" } })));
+            Assert.That(delegate { adder.Evaluate(new string[] { "-1", "truc" }); } , Throws.TypeOf<EvaluationException>());
         }
     }
 
     [TestFixture()]
     public class TestSubtractor
     {
-        private Assembly dll;
-        private Type type = null;
-        private Object o = null;
+        private Subtractor.Subtractor sub = new Subtractor.Subtractor();
 
         private string helpMessage = "Cette fonction permet de soustraire deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
@@ -81,60 +64,44 @@ namespace UnitTest
 
         private string[] parametersName = { "first", "second" };
 
-        [SetUp()]
-        public void Init()
-        {
-            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
-            dll = Assembly.LoadFile(path + @"\Subtractor.dll");
-            type = dll.GetExportedTypes()[0];
-            o = Activator.CreateInstance(type);
-        }
-
         [Test()]
         public void TestName()
         {
-            Assert.That("Subtractor", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+            Assert.That("Subtractor", Is.EqualTo(sub.Name));
         }
         
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(sub.HelpMessage));
         }
 
         [Test()]
         public void TestParametersName()
         {
-            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+            Assert.That(parametersName, Is.EqualTo(sub.ParametersName));
         }
 
         [Test()]
         public void TestEvaluate()
         {
-            Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "2", "1" } })));
+            Assert.That(1, Is.EqualTo(sub.Evaluate(new string[] { "2", "1" })));
 
-            Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1", "-1" } })));
+            Assert.That(0, Is.EqualTo(sub.Evaluate(new string[] { "-1", "-1" })));
 
-            Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0.5", "0.5" } })));
+            Assert.That(0, Is.EqualTo(sub.Evaluate(new string[] { "0.5", "0.5" })));
 
             /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
-            Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0.5", "0.5", "32" } })));
+            Assert.That(delegate { sub.Evaluate(new string[] { "0.5", "0.5", "32" }); }, Throws.TypeOf<EvaluationException>());
 
-            Assert.That(0, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0.5", "machin" } })));
+            Assert.That(delegate { sub.Evaluate(new string[] { "0.5", "machin" }); }, Throws.TypeOf<EvaluationException>());
         }
     }
 
     [TestFixture()]
     public class TestMultiplier
     {
-        private Assembly dll;
-        private Type type = null;
-        private Object o = null;
+        private Multiplier.Multiplier mult = new Multiplier.Multiplier();
 
         private string helpMessage = "Cette fonction permet de multiplier/diviser deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
@@ -142,60 +109,44 @@ namespace UnitTest
 
         private string[] parametersName = { "numerator", "denominator" };
 
-        [SetUp()]
-        public void Init()
-        {
-            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
-            dll = Assembly.LoadFile(path + @"\Multiplier.dll");
-            type = dll.GetExportedTypes()[0];
-            o = Activator.CreateInstance(type);
-        }
-
         [Test()]
         public void TestName()
         {
-            Assert.That("Multiplier", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+            Assert.That("Multiplier", Is.EqualTo(mult.Name));
         }
 
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(mult.HelpMessage));
         }
 
         [Test()]
         public void TestParametersName()
         {
-            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+            Assert.That(parametersName, Is.EqualTo(mult.ParametersName));
         }
 
         [Test()]
         public void TestEvaluate()
         {
-            Assert.That(2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "2", "1" } })));
+            Assert.That(2, Is.EqualTo(mult.Evaluate(new string[] { "2", "1" })));
 
-            Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1", "-1" } })));
+            Assert.That(1, Is.EqualTo(mult.Evaluate(new string[] { "-1", "-1" })));
 
-            Assert.That(0.25, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0,5", "0,5" } })));
+            Assert.That(0.25, Is.EqualTo(mult.Evaluate(new string[] { "0,5", "0,5" })));
 
             /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
-            Assert.That(20, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "42", "brol" } })));
+            Assert.That(delegate { mult.Evaluate(new string[] { "42", "brol" }); }, Throws.TypeOf<EvaluationException>());
 
-            Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0,5", "0,5" ,"-1" ,"-10000"} })));
+            Assert.That(delegate { mult.Evaluate(new string[] { "0,5", "0,5", "-1", "-10000" }); }, Throws.TypeOf<EvaluationException>());
         }
     }
 
     [TestFixture()]
     public class TestDivisor
     {
-        private Assembly dll;
-        private Type type = null;
-        private Object o = null;
+        private Divisor.Divisor div = new Divisor.Divisor();
 
         private string helpMessage = "Cette fonction permet de diviser deux valeurs entre elles.\r\n" +
                                      "Les valeurs peuvent être réelles ou non. Le type de la variable de retour est " +
@@ -203,63 +154,46 @@ namespace UnitTest
 
         private string[] parametersName = { "numerator", "denominator" };
 
-        [SetUp()]
-        public void Init()
-        {
-            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
-            dll = Assembly.LoadFile(path + @"\Divisor.dll");
-            type = dll.GetExportedTypes()[0];
-            o = Activator.CreateInstance(type);
-        }
-
         [Test()]
         public void TestName()
         {
-            Assert.That("Divisor", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+            Assert.That("Divisor", Is.EqualTo(div.Name));
         }
         
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(div.HelpMessage));
         }
 
         [Test()]
         public void TestParametersName()
         {
-            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+            Assert.That(parametersName, Is.EqualTo(div.ParametersName));
         }
 
         [Test()]
         public void TestEvaluate()
         {
-            Assert.That(2, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "2", "1" } })));
+            Assert.That(2, Is.EqualTo(div.Evaluate(new string[] { "2", "1" })));
 
-            Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1", "-1" } })));
+            Assert.That(1, Is.EqualTo(div.Evaluate(new string[] { "-1", "-1" })));
 
-            Assert.That(1, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0.5", "0.5" } })));
+            Assert.That(1, Is.EqualTo(div.Evaluate(new string[] { "0.5", "0.5" })));
 
             /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
-            Assert.That(0.25, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "42", "brol" } })));
+            Assert.That(delegate { div.Evaluate(new string[] { "42", "brol" }); }, Throws.TypeOf<EvaluationException>());
 
-            Assert.That(0.25, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "42", "0" } })));
+            Assert.That(delegate { div.Evaluate(new string[] { "42", "0" }); }, Throws.TypeOf<EvaluationException>());
 
-            Assert.That(42, Is.EqualTo((double)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0,5", "0,5", "truc", "-10000" } })));
+            Assert.That(delegate { div.Evaluate(new string[] { "0,5", "0,5", "truc", "-10000" }); }, Throws.TypeOf<EvaluationException>());
         }
     }
 
     [TestFixture()]
     public class TestRacine
     {
-        private Assembly dll;
-        private Type type = null;
-        private Object o = null;
+        private Racine.Racine rac = new Racine.Racine();
 
         private string helpMessage = "Cette fonction permet calculer les racines d'un polynome du second degré" +
                                      "(les valeurs peuvent être réelles ou non).\r\nLe type de la variable de retour est " +
@@ -267,52 +201,38 @@ namespace UnitTest
 
         private string[] parametersName = { "a", "b", "c" };
 
-        [SetUp()]
-        public void Init()
-        {
-            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
-            dll = Assembly.LoadFile(path + @"\Racine.dll");
-            type = dll.GetExportedTypes()[0];
-            o = Activator.CreateInstance(type);
-        }
-
         [Test()]
         public void TestName()
         {
-            Assert.That("Racine", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+            Assert.That("Racine", Is.EqualTo(rac.Name));
         }
 
         
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(rac.HelpMessage));
         }
 
         [Test()]
         public void TestParametersName()
         {
-            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+            Assert.That(parametersName, Is.EqualTo(rac.ParametersName));
         }
 
         [Test()]
         public void TestEvaluate()
         {
-            Assert.That(new double[] { 1, 0.67 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "3", "-5", "2" } })));
+            Assert.That(new double[] { 1, 0.67 }, Is.EqualTo(rac.Evaluate(new string[] { "3", "-5", "2" })));
 
-            Assert.That(new double[] { 3, -2 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "4", "-4", "-24" } })));
+            Assert.That(new double[] { 3, -2 }, Is.EqualTo(rac.Evaluate(new string[] { "4", "-4", "-24" })));
 
-            Assert.That(new double[] { 0, 0, 0 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "1", "1", "1" } })));
+            Assert.That(new double[] { 0, 0, 0 }, Is.EqualTo(rac.Evaluate(new string[] { "1", "1", "1" })));
 
             /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
-            Assert.That(new double[] { 0, 0, 0 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "1", "42", "1", "6" } })));
+            Assert.That(delegate {rac.Evaluate(new string[] { "1", "42", "1", "6" }); }, Throws.TypeOf<EvaluationException>());
 
-            Assert.That(new double[] { 32, 0, 45 }, Is.EqualTo((double[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                                    null, o, new object[] { new string[] { "1", "truc", "1" } })));
+            Assert.That(delegate { rac.Evaluate(new string[] { "1", "truc", "1" }); }, Throws.TypeOf<EvaluationException>());
 
         }
     }
@@ -320,9 +240,7 @@ namespace UnitTest
     [TestFixture()]
     public class TestPolaire
     {
-        private Assembly dll;
-        private Type type = null;
-        private Object o = null;
+        private Polaire.Polaire pol = new Polaire.Polaire();
 
         private string helpMessage = "Cette fonction permet de calculer le module et l'argument" +
                                      "à partir de la forme cartésienne du complexe. \r\n" +
@@ -330,32 +248,23 @@ namespace UnitTest
 
         private string[] parametersName = { "Re", "Im" };
 
-        [SetUp()]
-        public void Init()
-        {
-            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
-            dll = Assembly.LoadFile(path + @"\Polaire.dll");
-            type = dll.GetExportedTypes()[0];
-            o = Activator.CreateInstance(type);
-        }
-
         [Test()]
         public void TestName()
         {
-            Assert.That("Polaire", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+            Assert.That("Polaire", Is.EqualTo(pol.Name));
         }
 
 
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(pol.HelpMessage));
         }
 
         [Test()]
         public void TestParametersName()
         {
-            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+            Assert.That(parametersName, Is.EqualTo(pol.ParametersName));
         }
 
         [Test()]
@@ -364,74 +273,52 @@ namespace UnitTest
             Assert.That("    Cartesien: 1+(1i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 1,41\r\n" +
-                        "        Arg: 45°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "1", "1" } })));
+                        "        Arg: 45°", Is.EqualTo(pol.Evaluate(new string[] { "1", "1" })));
 
             Assert.That("    Cartesien: 2+(-4i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 4,47\r\n" +
-                        "        Arg: -63,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "2", "-4" } })));
+                        "        Arg: -63,43°", Is.EqualTo(pol.Evaluate(new string[] { "2", "-4" })));
 
             Assert.That("    Cartesien: -1,5+(-4,5i)\r\n" +
                         "    Polaire:\r\n" +
                         "        Module: 4,74\r\n" +
-                        "        Arg: -108,43°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1,5", "-4,5" } })));
+                        "        Arg: -108,43°", Is.EqualTo(pol.Evaluate(new string[] { "-1,5", "-4,5" })));
 
             /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
-            Assert.That("    Cartesien: -51+(-54i)\r\n" +
-                        "    Polaire:\r\n" +
-                        "        Module: 4,74\r\n" +
-                        "        Arg: -10°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1,5", "-4,5", "50" } })));
+            Assert.That(delegate { pol.Evaluate(new string[] { "-1,5", "-4,5", "50" }); }, Throws.TypeOf<EvaluationException>());
 
-            Assert.That("    Cartesien: -23+(-45i)\r\n" +
-                        "    Polaire:\r\n" +
-                        "        Module: 42\r\n" +
-                        "        Arg: -100°", Is.EqualTo((string)type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-1,5", "machin" } })));
+            Assert.That(delegate { pol.Evaluate(new string[] { "-1,5", "machin" }); }, Throws.TypeOf<EvaluationException>());
         }
     }
 
     [TestFixture()]
     public class TestStat
     {
-        private Assembly dll;
-        private Type type = null;
-        private Object o = null;
+        private Stat.Stat stat = new Stat.Stat();
 
         private string helpMessage = "Cette fonction permet de calculer la moyenne, la variance\r\n" +
                                      "et l'ecart type des données fournis.";
 
         private string[] parametersName = { "data" };
 
-        [SetUp()]
-        public void Init()
-        {
-            string path = @"C:\Users\le-so\Github\Projet2_POObis\dll";
-            dll = Assembly.LoadFile(path + @"\Stat.dll");
-            type = dll.GetExportedTypes()[0];
-            o = Activator.CreateInstance(type);
-        }
-
         [Test()]
         public void TestName()
         {
-            Assert.That("Stat", Is.EqualTo(type.GetProperty("Name").GetValue(o)));
+            Assert.That("Stat", Is.EqualTo(stat.Name));
         }
 
 
         [Test()]
         public void TestHelpMessage()
         {
-            Assert.That(helpMessage, Is.EqualTo(type.GetProperty("HelpMessage").GetValue(o)));
+            Assert.That(helpMessage, Is.EqualTo(stat.HelpMessage));
         }
 
         [Test()]
         public void TestParametersName()
         {
-            Assert.That(parametersName, Is.EqualTo(type.GetProperty("ParametersName").GetValue(o)));
+            Assert.That(parametersName, Is.EqualTo(stat.ParametersName));
         }
 
         [Test()]
@@ -439,24 +326,18 @@ namespace UnitTest
         {
             Assert.That(new string[] { "    Moyenne: 1,5\r\n",
                         "    Variance: 0,25\r\n",
-                        "    Deviation: 0,5" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "1", "2" } })));
+                        "    Deviation: 0,5" }, Is.EqualTo(stat.Evaluate(new string[] { "1", "2" })));
 
             Assert.That(new string[] { "    Moyenne: -0,5\r\n",
                         "    Variance: 11,25\r\n",
-                        "    Deviation: 3,35" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "-2", "4", "-5", "1" } })));
+                        "    Deviation: 3,35" }, Is.EqualTo(stat.Evaluate(new string[] { "-2", "4", "-5", "1" })));
 
             Assert.That(new string[] { "    Moyenne: 19,25\r\n",
                         "    Variance: 666,69\r\n",
-                        "    Deviation: 25,82" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0", "-10", "32", "55" } })));
+                        "    Deviation: 25,82" }, Is.EqualTo(stat.Evaluate(new string[] { "0", "-10", "32", "55" })));
 
             /*Tests qui ratent à coup sure, permet de verifier les exceptions*/
-            Assert.That(new string[] { "    Moyenne: 19,25\r\n",
-                        "    Variance: 666\r\n",
-                        "    Deviation: 32" }, Is.EqualTo((string[])type.InvokeMember("Evaluate", BindingFlags.InvokeMethod,
-                                                        null, o, new object[] { new string[] { "0", "-10", "machin", "55" } })));
+            Assert.That(delegate { stat.Evaluate(new string[] { "0", "-10", "machin", "55" }); }, Throws.TypeOf<EvaluationException>());
 
         }
     }

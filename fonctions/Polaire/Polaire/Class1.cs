@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using SuperComputer;
 
-namespace Adder
+namespace Polaire
 {
     public class Polaire : Function<string>
     {
